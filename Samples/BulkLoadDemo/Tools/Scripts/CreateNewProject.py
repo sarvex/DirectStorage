@@ -52,13 +52,13 @@ def copy_lib_template(project, guid):
     copy_template_file('LibTemplate.vcxproj.filters', project, guid)
 
 def create_project():
-    if len(sys.argv) != 3 or sys.argv[1].lower() != 'app' and sys.argv[1].lower() != 'lib':
+    if len(sys.argv) != 3 or sys.argv[1].lower() not in ['app', 'lib']:
         print('Usage:  {0} [app|lib] <ProjectName>'.format(sys.argv[0]))
         return
 
     project_name = sys.argv[2]
     folder_contents = set(os.listdir())
-    expected_contents = set(['readme.md', 'Core', 'Tools'])
+    expected_contents = {'readme.md', 'Core', 'Tools'}
     if not expected_contents.issubset(folder_contents):
         print('Run this script from the root of MiniEngine')
     elif project_name in folder_contents:

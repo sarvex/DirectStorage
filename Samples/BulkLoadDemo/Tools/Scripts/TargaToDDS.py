@@ -1,12 +1,8 @@
 def CompileTGA( filename, normalMap=False ):
 	import subprocess
 
-	args = 'texconv.exe ' + filename + ' -nologo -vflip'
-	if normalMap:
-		args += ' -f BC1_UNORM'
-	else:
-		args += ' -srgbi -f BC1_UNORM_SRGB'
-
+	args = f'texconv.exe {filename} -nologo -vflip'
+	args += ' -f BC1_UNORM' if normalMap else ' -srgbi -f BC1_UNORM_SRGB'
 	print('Calling "{0}"'.format(args))
 	subprocess.call(args.split())
 

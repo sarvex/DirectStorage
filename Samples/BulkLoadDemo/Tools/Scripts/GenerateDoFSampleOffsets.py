@@ -8,7 +8,7 @@ Created on Wed May 27 10:42:38 2015
 from math import pi, sin, cos
 
 def GenerateCircularSamplePattern( name, numSamples, radius = 1.0):
-    print('static const float2 {}[{}] =\n{{'.format(name, numSamples))
+    print(f'static const float2 {name}[{numSamples}] =\n{{')
     for sample in range(numSamples // 2):
         angle = sample / numSamples * 2.0 * pi
         x, y = radius * cos(angle), radius * sin(angle)
@@ -24,7 +24,7 @@ GenerateCircularSamplePattern('s_Ring2', 16, 11.0)
 GenerateCircularSamplePattern('s_Ring3', 24, 16.0)
 
 def GenerateQuantizedCircularSamplePattern( name, numSamples, radius = 1.0):
-    print('static const int {}[{}] =\n{{'.format(name, numSamples))
+    print(f'static const int {name}[{numSamples}] =\n{{')
     for sample in range(numSamples // 2):
         angle = sample / numSamples * 2.0 * pi
         x, y = radius * cos(angle), radius * sin(angle)

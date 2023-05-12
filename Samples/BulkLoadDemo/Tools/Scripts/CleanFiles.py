@@ -25,7 +25,7 @@ def clean_line(line):
 
 def clean_file(filename):
     '''Cleans the white space in a file'''
-    print('processing ' + filename)
+    print(f'processing {filename}')
     try:
         lines = open(filename, 'r').readlines()
         with open(filename, 'w') as outfile:
@@ -35,9 +35,7 @@ def clean_file(filename):
         print('  ***Failed')
 
 if __name__ == "__main__":
-    start_path = '.'
-    if len(sys.argv) > 1:
-        start_path = sys.argv[1]
+    start_path = sys.argv[1] if len(sys.argv) > 1 else '.'
     for root, dirs, files in os.walk(start_path):
         # Clean only files with these extensions
         for file in files:
